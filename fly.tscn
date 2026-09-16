@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://b02db8ddqqlu3"]
+
+[ext_resource type="Script" uid="uid://bvd3x4odhry1y" path="res://fly.gd" id="1_qarim"]
+[ext_resource type="Texture2D" uid="uid://dwt05mx47n4xu" path="res://assets/insects/fly/Giant Fly Sprite Sheet.png" id="2_7c42i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vef74"]
+atlas = ExtResource("2_7c42i")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hve3p"]
+atlas = ExtResource("2_7c42i")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80cx4"]
+atlas = ExtResource("2_7c42i")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8heu"]
+atlas = ExtResource("2_7c42i")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w0igq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vef74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hve3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80cx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8heu")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5b1iq"]
+radius = 34.928497
+
+[node name="Fly" type="Area2D" unique_id=661613071]
+script = ExtResource("1_qarim")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=375499428]
+position = Vector2(181, 75)
+scale = Vector2(3.75, 3.5625)
+sprite_frames = SubResource("SpriteFrames_w0igq")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=540170361]
+position = Vector2(183, 78)
+shape = SubResource("CircleShape2D_5b1iq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
