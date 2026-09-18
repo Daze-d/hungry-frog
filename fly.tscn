@@ -46,13 +46,11 @@ radius = 34.928497
 script = ExtResource("1_qarim")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=375499428]
-position = Vector2(181, 75)
 scale = Vector2(3.75, 3.5625)
 sprite_frames = SubResource("SpriteFrames_w0igq")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=540170361]
-position = Vector2(183, 78)
 shape = SubResource("CircleShape2D_5b1iq")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

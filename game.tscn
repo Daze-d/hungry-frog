@@ -1,15 +1,17 @@
 [gd_scene format=3 uid="uid://qbjklnr2e5vd"]
 
-[ext_resource type="Texture2D" uid="uid://bkug1qi8h2e1m" path="res://assets/background/HR_Deep Forest.png" id="1_80nbo"]
 [ext_resource type="Shader" uid="uid://c3j3a4piautv1" path="res://game.gdshader" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://c6mrs1lrvspv2" path="res://game.gd" id="1_hve3p"]
 [ext_resource type="Texture2D" uid="uid://m4r0jjdhnn75" path="res://assets/character/Idle.png" id="3_feb5d"]
+[ext_resource type="Texture2D" uid="uid://ccl42vh3baur8" path="res://assets/background/NEWnew background.png" id="3_iotsf"]
 [ext_resource type="Script" uid="uid://b5msai7rmp28x" path="res://frog.gd" id="3_j5wjh"]
 [ext_resource type="Texture2D" uid="uid://b7ao0xuieb4km" path="res://assets/character/Land.png" id="4_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://ch1qmfpaibyc7" path="res://assets/character/Fall.png" id="4_j5wjh"]
 [ext_resource type="Texture2D" uid="uid://cm4erxg1lnj23" path="res://assets/character/Jump.png" id="6_vef74"]
 [ext_resource type="Texture2D" uid="uid://vg15kcykf82s" path="res://assets/character/Turn.png" id="8_hve3p"]
 [ext_resource type="PackedScene" uid="uid://b02db8ddqqlu3" path="res://fly.tscn" id="10_mfdv2"]
+[ext_resource type="PackedScene" uid="uid://b55wggcgaffl8" path="res://butterfly.tscn" id="11_iotsf"]
+[ext_resource type="Script" uid="uid://s3mvj5xtex0t" path="res://butterfly.gd" id="12_lc2xo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e2o6t"]
 shader = ExtResource("1_e2o6t")
@@ -114,9 +116,8 @@ script = ExtResource("1_hve3p")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=744148027]
 material = SubResource("ShaderMaterial_e2o6t")
-position = Vector2(132, 323)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("1_80nbo")
+texture = ExtResource("3_iotsf")
+centered = false
 
 [node name="Frog" type="CharacterBody2D" parent="." unique_id=6607514]
 position = Vector2(180, 580)
@@ -139,4 +140,13 @@ position = Vector2(-1, -134)
 wait_time = 2.0
 autostart = true
 
+[node name="Butterfly" parent="." unique_id=410269107 instance=ExtResource("11_iotsf")]
+position = Vector2(62, -221)
+script = ExtResource("12_lc2xo")
+
+[node name="ButterflyTimer" type="Timer" parent="." unique_id=1806350485]
+wait_time = 4.0
+autostart = true
+
 [connection signal="timeout" from="FlyTimer" to="." method="_on_fly_timer_timeout"]
+[connection signal="timeout" from="ButterflyTimer" to="." method="_on_butterfly_timer_timeout"]
